@@ -1,17 +1,48 @@
-/* 
- * Always set the map height explicitly to define the size of the div element
- * that contains the map. 
- */
- #map {
-    height: 100%;
-  }
-  
-  /* 
-   * Optional: Makes the sample page fill the window. 
-   */
-  html,
-  body {
-    height: 100%;
+/* Container */
+* {
+    box-sizing: border-box;
+}
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+.container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr;
+    border: 1px solid black;
+    height: 100vh;
     margin: 0;
     padding: 0;
   }
+  /* Left panel */
+  .left-panel {
+    border-right: 1px solid black;
+    padding: 10px;
+  }
+  /* Middle panel */
+  .middle-panel {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding: 10px;
+  }
+  /* Right panel */
+  .right-panel {
+    border-left: 1px solid black;
+    padding: 10px;
+  }
+  /* Left panel sections */
+  .left-panel-section {
+    border-bottom: 1px solid black;
+    padding: 10px;
+  }
+  /* Right panel sections */
+  .right-panel-section {
+    border-bottom: 1px solid black;
+    padding: 10px;
+  }
+  #map {
+    height: 100%;
+  }
+  
