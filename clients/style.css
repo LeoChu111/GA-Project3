@@ -47,6 +47,16 @@ body {
   background: #fef1f5;
 }
 
+.about h2, .about h3 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.about ul {
+  list-style: none;
+  padding-left: 0;
+}
+
 
 /* Middle panel */
 .middle-panel {
