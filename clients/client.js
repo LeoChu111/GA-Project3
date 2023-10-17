@@ -7,21 +7,24 @@ function initMap() {
     center: myLatLng,
   });
 
-  fetch('/api/stations/all')
-    .then(res => res.json())
-    .then(res => {
-      console.log(res)
-      return res
+  fetch("/api/stations/all")
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(res);
+      return res;
     })
-    .then(results => {
-      for(i = 0; i < 400; i++) {
+    .then((results) => {
+      for (i = 0; i < 400; i++) {
         new google.maps.Marker({
-          position: { lat: Number(results[i].latitude), lng: Number(results[i].longtitude) },
+          position: {
+            lat: Number(results[i].latitude),
+            lng: Number(results[i].longtitude),
+          },
           map: map,
           title: results[i].name,
-        })
+        });
       }
-    })
+    });
 }
 
 window.initMap = initMap;
