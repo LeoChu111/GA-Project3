@@ -9,5 +9,4 @@ function fetchOwners() {
 function fetchStations() {
   return fetch("/api/stations/all")
     .then((res) => res.json())
-    .then((res) => res.length);
 }
