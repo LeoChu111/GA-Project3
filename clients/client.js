@@ -1,4 +1,3 @@
-let map;
 
 const mapCenterLocationDiv = document.querySelector(".map-center-location");
 

@@ -10,3 +10,9 @@ function fetchStations() {
   return fetch("/api/stations/all")
     .then((res) => res.json())
 }
+
+
+function fetchRandomStation() {
+    return fetch("/api/stations/random")
+        .then((res) => res.json())
+}
