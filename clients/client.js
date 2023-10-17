@@ -51,7 +51,7 @@ function initMap() {
           const lng = center.lng();
           const centerLocationSection = document.createElement("section");
           centerLocationSection.innerHTML = `
-            Map Center Location <br> Latitude: ${lat}<br>Longitude: ${lng}`;
+            Latitude: ${lat}<br>Longitude: ${lng}`;
           mapCenterLocationDiv.innerHTML = "";
           mapCenterLocationDiv.appendChild(centerLocationSection);
         }
@@ -94,3 +94,25 @@ function initMap() {
 }
 
 window.initMap = initMap;
+
+
+// Dark Mode Toggle
+let darkModeToggle = document.getElementById('dark-mode-toggle');
+
+let isDarkMode = document.body.classList.contains('dark');
+
+if (isDarkMode) {
+  darkModeToggle.textContent = "Light Mode";
+} else {
+  darkModeToggle.textContent = "Dark Mode";
+}
+
+darkModeToggle.addEventListener('click', function() {
+    document.body.classList.toggle('dark');
+
+    if (document.body.classList.contains('dark')) {
+      darkModeToggle.textContent = "Light Mode";
+  } else {
+      darkModeToggle.textContent = "Dark Mode";
+  }
+});

@@ -4,8 +4,8 @@ function updateTime() {
   });
 
   const clockDiv = document.querySelector(".clock");
-  const clock = document.createElement("h2");
-  clock.innerHTML = date;
+  const clock = document.createElement("h3");
+  clock.innerHTML = `&#x1F55B; ${date}`;
   clockDiv.innerHTML = "";
   clockDiv.appendChild(clock);
 }
