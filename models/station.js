@@ -1,7 +1,7 @@
 const db = require("../db");
 
 function findAll() {
-  const sql = `SELECT * FROM stations WHERE id <= 400
+  const sql = `SELECT * FROM stations
   ORDER BY id;`;
   return db.query(sql).then((result) => result.rows);
 }
