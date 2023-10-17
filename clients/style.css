@@ -132,6 +132,10 @@ a:hover {
   padding-left: 0;
 }
 
+.latest-prices li {
+  margin-bottom: 12px;
+}
+
 .about ul {
   list-style: none;
   padding-left: 0;
@@ -184,6 +188,10 @@ a:hover {
 
 .clock {
   background: var(--clock-bg);
+}
+
+.clock h2{
+  border-bottom: 0px;
 }
 
 .map-center {
@@ -249,4 +257,14 @@ body.dark button {
 
 body.dark button:hover {
   background-color: #588bd9;
+}
+
+/* Hot Key for hiding sidebars */
+body.sidebar-hidden .left-panel,
+body.sidebar-hidden .right-panel {
+  display: none;
+}
+
+body.sidebar-hidden .container {
+  grid-template-columns: 1fr;
 }
