@@ -16,13 +16,26 @@ function initMap() {
     })
     .then((results) => {
       for (i = 0; i < 400; i++) {
-        new google.maps.Marker({
+        const contentString =
+        `<h3 id="firstHeading" class="firstHeading">${results[i].name}</h3>
+         <p id="address">${results[i].address}</p>`;
+        const infowindow = new google.maps.InfoWindow({
+          content: contentString,
+          ariaLabel: results[i].name,
+        });
+        const marker = new google.maps.Marker({
           position: {
             lat: Number(results[i].latitude),
             lng: Number(results[i].longtitude),
           },
           map: map,
           title: results[i].name,
+        });
+        marker.addListener("click", () => {
+          infowindow.open({
+            anchor: marker,
+            map,
+          });
         });
       }
     });
