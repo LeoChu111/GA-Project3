@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 const Station = require("../models/station");
 
-router.get("/all", (req, res) => {
-  Station.findAll().then((stations) => res.json(stations));
+router.get("/owners", (req, res) => {
+  Station.findAllOwners().then((owners) => res.json(owners));
 });
 
 module.exports = router;
