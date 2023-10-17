@@ -5,3 +5,4 @@ fetchOwners().then((res) => (totalOwners.innerHTML = res));
 fetchStations()
     .then(res => res.length)
     .then(res => (totalStations.innerHTML = res));
+

@@ -10,9 +10,17 @@ function findAllOwners() {
   return db.query(sql).then((result) => result.rows);
 }
 
+function randomStation() {
+  let randomNum = Math.floor(Math.random() * 5244) + 1 ;
+  const sql = `SELECT * FROM stations WHERE id = ${randomNum};`
+
+  return db.query(sql).then((result) => result.rows[0]);
+}
+
 const Station = {
   findAll,
   findAllOwners,
+  randomStation
 };
 
 module.exports = Station;
