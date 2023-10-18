@@ -7,13 +7,15 @@ fetchStats()
         totalStations.innerHTML = res.totalStations
         totalOwners.innerHTML = res.totalOwners
         for(i = 0; i < 7; i++) {
-            let list = document.createElement('li')
-            let span = document.createElement('span')
-            list.innerText = res.owners[i].owner
-            span.innerText = Number(res.owners[i].total)
+            let stats = document.createElement('div')
+            stats.classList.add('stats-wrapper')
+            let html = `
+                <li>${res.owners[i].owner}</li>
+                <span>${Number(res.owners[i].total)}</span>
+            `
+            stats.innerHTML = html
             let statsParent = document.querySelector('.stats-list')
-            statsParent.appendChild(list)
-            statsParent.appendChild(span)
+            statsParent.appendChild(stats)
         }
     })
 
