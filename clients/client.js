@@ -66,20 +66,47 @@ function initMap() {
                 content: contentString,
                 ariaLabel: results[i].name,
               });
-              const marker = new google.maps.Marker({
-                position: {
-                  lat: Number(results[i].latitude),
-                  lng: Number(results[i].longitude),
-                },
-                map: map,
-                title: results[i].name,
-              });
-              marker.addListener("click", () => {
-                infowindow.open({
-                  anchor: marker,
-                  map,
+              const image = {
+                Shell: {name: "Shell", url: "/images/shell.png", scaledSize: new google.maps.Size(30, 30)},
+                BP: {name: "BP", url: "/images/BP-logo.png", scaledSize: new google.maps.Size(30, 30)},
+                "7-Eleven Pty Ltd": {name: "7-Eleven Pty Ltd", url: "/images/7eleven.png", scaledSize: new google.maps.Size(30, 30)},
+                "Independent Fuel Supplies": {name: "Independent Fuel Supplies", url: "/images/inde.png", scaledSize: new google.maps.Size(30, 30)},
+                Caltex: {name: "Caltex", url: "/images/caltex.png", scaledSize: new google.maps.Size(30, 30)},
+                GoogleMark: {name: "GoogleMark", url: "/images/googlemapmarker.png", scaledSize: new google.maps.Size(30, 30)}
+              }
+              if (image.hasOwnProperty(results[i].owner)) {
+                const marker = new google.maps.Marker({
+                  position: {
+                    lat: Number(results[i].latitude),
+                    lng: Number(results[i].longitude),
+                  },
+                  map: map,
+                  icon: image[results[i].owner],
+                  title: results[i].name,
                 });
-              });
+                marker.addListener("click", () => {
+                  infowindow.open({
+                    anchor: marker,
+                    map,
+                  });
+                });
+              } else {
+                const marker = new google.maps.Marker({
+                  position: {
+                    lat: Number(results[i].latitude),
+                    lng: Number(results[i].longitude),
+                  },
+                  map: map,
+                  icon: {name: "GoogleMark", url: "/images/googlemapmarker.png", scaledSize: new google.maps.Size(30, 30)},
+                  title: results[i].name,
+                });
+                marker.addListener("click", () => {
+                  infowindow.open({
+                    anchor: marker,
+                    map,
+                  });
+                });
+              }
             }
           });
       },
