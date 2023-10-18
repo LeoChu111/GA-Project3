@@ -35,6 +35,7 @@ function nearestStation(lat, lng) {
     id,
     name,
     address,
+    owner,
     latitude,
     longitude,
     (

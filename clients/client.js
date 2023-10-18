@@ -73,11 +73,27 @@ function initMap() {
                 ) / 100
               }M</strong></br>${station.address}</p>
               `;
+              const image = {
+                Shell: "/images/shell.png",
+                BP: "/images/BP-logo.png",
+                "7-Eleven Pty Ltd": "/images/7eleven.png",
+                "Independent Fuel Supplies": "/images/inde.png",
+                Caltex: "/images/caltex.png",
+                GoogleMark: "/images/googlemapmarker.png",
+              };
               // create the element
+              const nearestStationIcon = document.createElement("img");
+              nearestStationIcon.classList.add("nearest-icon-style");
+
+              if (image.hasOwnProperty(station.owner)) {
+                nearestStationIcon.src = `${image[station.owner]}`;
+              } else {
+                nearestStationIcon.src = `${image.GoogleMark}`;
+              }
               let stationDiv = document.createElement("div");
               stationDiv.innerHTML = HTML;
               stationDiv.className = "nearest-stations";
-
+              nearest.appendChild(nearestStationIcon);
               nearest.appendChild(stationDiv);
             }
           });
@@ -87,12 +103,10 @@ function initMap() {
 
         google.maps.event.addListener(map, "dragend", getCenterLocation);
 
-        // why didnt we use the function that we made in stations_api.js "fetchStations()"
-
         fetch("/api/stations/all")
           .then((res) => res.json())
           .then((results) => {
-            for (i = 0; i < 400; i++) {
+            for (i = 0; i < results.length; i++) {
               const contentString = `<h3 id="firstHeading" class="firstHeading">${results[i].name}</h3>
                <p id="address">${results[i].address}</p>`;
               const infowindow = new google.maps.InfoWindow({
