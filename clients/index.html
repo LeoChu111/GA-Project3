@@ -2,32 +2,32 @@
   <head>
     <title>Simple Markers</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway&display=swap"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" type="text/css" href="./style.css" />
   </head>
   <body>
-
     <header class="page-header">
-        <div class="title-wrapper">
-          <img src="./images/Logo 7.png" alt="">
-          <h1>Servo App</h1>
-        </div>
-        <button id="dark-mode-toggle">Dark Mode</button>
+      <div class="title-wrapper">
+        <img src="./images/Logo 7.png" alt="" />
+        <h1>Servo App</h1>
+      </div>
+      <button id="dark-mode-toggle">Dark Mode</button>
     </header>
 
     <div class="container">
-
       <div class="left-panel">
-
         <div class="spotlight">
           <h2>Spotlight</h2>
           <a href="" id="refresh-link">refresh</a>
           <p id="random-name"></p>
           <p id="random-address"></p>
-          <img src="" alt="" id="spotlight-logo">
+          <img src="" alt="" id="spotlight-logo" />
         </div>
 
         <div class="stats">
@@ -43,10 +43,11 @@
           <ul>
             <li>WTI oil <span id="wti-price"></span> USD per barrel</li>
             <li>Brent oil <span id="brent-price"></span> USD per barrel</li>
-            <li>Natural gas <span id="natural-gas-price"></span>USD per barrel</li>
+            <li>
+              Natural gas <span id="natural-gas-price"></span>USD per barrel
+            </li>
           </ul>
         </div>
-
 
         <div class="about">
           <h2>About</h2>
@@ -84,7 +85,6 @@
             </li>
           </ul>
         </div>
-
       </div>
 
       <div class="middle-panel">
@@ -92,7 +92,6 @@
       </div>
 
       <div class="right-panel">
-
         <div class="clock"></div>
 
         <div class="map-center">
@@ -106,15 +105,16 @@
         </div>
       </div>
     </div>
-    
+
     <script
-    async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw6Ogv_TaP2W_dIEicF0z0mBY4yX3fCUo&callback=initMap"
+      async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw6Ogv_TaP2W_dIEicF0z0mBY4yX3fCUo&callback=initMap"
     ></script>
-    
+
     <script src="/client.js"></script>
-    <script src="/clock.js"></script>
     <script src="/utils/station_api.js"></script>
+    <script src="/components/latest_prices.js"></script>
+    <script src="/components/clock.js"></script>
     <script src="/components/stats_section.js"></script>
     <script src="/components/nearest_section.js"></script>
     <script src="/components/spotlight_section.js"></script>
