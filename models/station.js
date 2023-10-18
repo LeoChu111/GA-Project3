@@ -40,15 +40,8 @@ function nearestStation(lat, lng) {
     latitude,
     longitude,
     (
-        6371 *
-        acos(
-            cos(radians(${lat})) *
-            cos(radians(latitude)) *
-            cos(radians(longitude) -
-            radians(${lng})) +
-            sin(radians(${lat})) *
-            sin(radians(latitude))
-        )
+      POW(${lat} - latitude, 2) + 
+        POW(${lng}- longitude, 2) 
     ) AS distance
 FROM
     stations
