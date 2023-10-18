@@ -121,8 +121,10 @@ a:hover {
   margin-top: -36px;
   margin-right: 5px;
 }
-
-/* Spotlight Logo */
+/* Spotlight logo */
+#spotlight-logo {
+  height: 40px;
+}
 
 
 /* Stats and Latest prices sections */
