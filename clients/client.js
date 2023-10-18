@@ -68,7 +68,9 @@ function initMap() {
             for (let station of stations) {
               const HTML = `
               <p>${station.name} <strong>${
-                station.distance * (110.574 * 110.574) * 1000
+                Math.round(
+                  station.distance * (110.574 * 110.574) * 1000 * 100
+                ) / 100
               }M</strong></br>${station.address}</p>
               `;
               // create the element
