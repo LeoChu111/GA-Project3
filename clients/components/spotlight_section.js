@@ -5,7 +5,7 @@ const refreshLink = document.querySelector("#refresh-link");
 fetchRandomStation().then((res) => {
   randomName.innerText = res.name;
   randomAddress.innerText = res.address;
-  
+
   let randomLat = Number(res.latitude);
   let randomLong = Number(res.longitude);
 
@@ -23,6 +23,7 @@ fetchRandomStation().then((res) => {
   } else {
     logo.src = `${image.GoogleMark}`
   }
+  
   randomName.addEventListener("click", handleRandomName);
 
   function handleRandomName(event) {
