@@ -18,6 +18,8 @@ const Station = require("../models/station");
 //   .then((response) => response.json())
 //   .then((data) => console.log(data.data[0].last));
 
-Station.stationsWithinRadius(-31.918249, 115.848241).then((res) =>
-  console.log(res.length)
-);
+// Station.stationsWithinRadius(-31.918249, 115.848241).then((res) =>
+//   console.log(res.length)
+// );
+
+Station.nearestStation(-31.918249, 115.848241).then((res) => console.log(res));
