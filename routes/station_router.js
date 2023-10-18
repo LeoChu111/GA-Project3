@@ -10,7 +10,7 @@ router.get("/random", (req, res) => {
   Station.randomStation().then((stations) => res.json(stations));
 });
 
-router.get("/nearest", (req, res) => {
+router.get("/within", (req, res) => {
   const lat = req.body.lat;
   const lng = req.body.lng;
   const radius = req.body.rad;
@@ -21,6 +21,16 @@ router.get("/nearest", (req, res) => {
     parseFloat(lng),
     parseFloat(radius)
   ).then((stations) => res.json(stations));
+});
+
+router.get("/nearest", (req, res) => {
+  const lat = req.body.lat;
+  const lng = req.body.lng;
+  console.log(req);
+
+  Station.nearestStation(parseFloat(lat), parseFloat(lng)).then((stations) =>
+    res.json(stations)
+  );
 });
 
 module.exports = router;

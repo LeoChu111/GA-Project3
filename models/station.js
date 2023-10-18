@@ -33,7 +33,29 @@ function stationsWithinRadius(lat, lng, rad) {
   return db.query(sql).then((result) => result.rows);
 }
 
-function calculateNearest() {}
+function nearestStation(lat, lng) {
+  const sql = `SELECT
+    id,
+    name,
+    latitude,
+    longitude,
+    (
+        6371 *
+        acos(
+            cos(radians(${lat})) *
+            cos(radians(latitude)) *
+            cos(radians(longitude) -
+            radians(${lng})) +
+            sin(radians(${lat})) *
+            sin(radians(latitude))
+        )
+    ) AS distance
+FROM
+    stations
+ORDER BY
+    distance LIMIT 10;`;
+  return db.query(sql).then((result) => result.rows);
+}
 
 const Station = {
   findAll,
@@ -41,6 +63,7 @@ const Station = {
   randomStation,
   findStats,
   stationsWithinRadius,
+  nearestStation,
 };
 
 module.exports = Station;
