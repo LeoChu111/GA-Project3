@@ -121,11 +121,23 @@ a:hover {
   margin-top: -36px;
   margin-right: 5px;
 }
+
 /* Spotlight logo */
-#spotlight-logo {
-  height: 40px;
+.random-station-wrapper {
+  display: flex;
+  justify-content: space-between;
 }
 
+#spotlight-logo {
+  height: 50px;
+  width: 50px;
+  margin-top: 10px;
+}
+
+.spotlight #random-name {
+  display: block;
+  margin-top: 10px;
+}
 
 /* Stats and Latest prices sections */
 .stats p, .stats .stats-list, .latest-prices p, .latest-prices ul {
@@ -211,7 +223,9 @@ a:hover {
 }
 
 .nearest-stations {
-  border-bottom: 1px solid var(--border-color)
+  border-bottom: 1px solid var(--border-color);
+  /* display: flex;
+  justify-content: space-between; */
 }
 
 /* Header */
