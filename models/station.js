@@ -9,7 +9,6 @@ function findAllOwners() {
   const sql = `SELECT DISTINCT owner FROM stations;`;
   return db.query(sql).then((result) => result.rows);
 }
-
 function randomStation() {
   let randomNum = Math.floor(Math.random() * 5244) + 1;
   const sql = `SELECT * FROM stations WHERE id = ${randomNum};`;
@@ -26,17 +25,16 @@ function findStats() {
   `;
   return db.query(sql).then((result) => result.rows);
 }
-
 function stationsWithinRadius(lat, lng, rad) {
   const sql = `SELECT * FROM stations WHERE latitude BETWEEN ${lat} - ${rad} AND ${lat} + ${rad} 
   AND longitude BETWEEN ${lng} - ${rad} AND ${lng} + ${rad};`;
   return db.query(sql).then((result) => result.rows);
 }
-
 function nearestStation(lat, lng) {
   const sql = `SELECT
     id,
     name,
+    address,
     latitude,
     longitude,
     (
