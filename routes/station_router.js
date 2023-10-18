@@ -7,7 +7,20 @@ router.get("/all", (req, res) => {
 });
 
 router.get("/random", (req, res) => {
-  Station.randomStation().then(stations => res.json(stations));
-})
+  Station.randomStation().then((stations) => res.json(stations));
+});
+
+router.get("/nearest", (req, res) => {
+  const lat = req.body.lat;
+  const lng = req.body.lng;
+  const radius = req.body.rad;
+  console.log(req);
+
+  Station.stationsWithinRadius(
+    parseFloat(lat),
+    parseFloat(lng),
+    parseFloat(radius)
+  ).then((stations) => res.json(stations));
+});
 
 module.exports = router;

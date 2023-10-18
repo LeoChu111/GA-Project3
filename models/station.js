@@ -11,8 +11,8 @@ function findAllOwners() {
 }
 
 function randomStation() {
-  let randomNum = Math.floor(Math.random() * 5244) + 1 ;
-  const sql = `SELECT * FROM stations WHERE id = ${randomNum};`
+  let randomNum = Math.floor(Math.random() * 5244) + 1;
+  const sql = `SELECT * FROM stations WHERE id = ${randomNum};`;
 
   return db.query(sql).then((result) => result.rows[0]);
 }
@@ -23,15 +23,24 @@ function findStats() {
   GROUP BY owner
   HAVING COUNT(*) > 1
   ORDER BY total DESC;
-  `
-  return db.query(sql).then((result => result.rows));
+  `;
+  return db.query(sql).then((result) => result.rows);
 }
+
+function stationsWithinRadius(lat, lng, rad) {
+  const sql = `SELECT * FROM stations WHERE latitude BETWEEN ${lat} - ${rad} AND ${lat} + ${rad} 
+  AND longitude BETWEEN ${lng} - ${rad} AND ${lng} + ${rad};`;
+  return db.query(sql).then((result) => result.rows);
+}
+
+function calculateNearest() {}
 
 const Station = {
   findAll,
   findAllOwners,
   randomStation,
-  findStats
+  findStats,
+  stationsWithinRadius,
 };
 
 module.exports = Station;
