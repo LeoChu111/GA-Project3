@@ -21,7 +21,8 @@ function findStats() {
   SELECT owner, COUNT(*) as total
   FROM stations
   GROUP BY owner
-  HAVING COUNT(*) > 1;
+  HAVING COUNT(*) > 1
+  ORDER BY total DESC;
   `
   return db.query(sql).then((result => result.rows));
 }

@@ -16,3 +16,7 @@ function fetchRandomStation() {
     return fetch("/api/stations/random")
         .then((res) => res.json())
 }
+function fetchStats() {
+  return fetch("/api/stats")
+        .then(res => res.json())
+}

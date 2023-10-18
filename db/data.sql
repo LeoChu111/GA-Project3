@@ -17,7 +17,7 @@ CREATE TABLE stations (
     revised text,
     comment text,
     latitude numeric,
-    longtitude numeric
+    longitude numeric
 );
 
 \copy stations FROM '/Users/leochu/sei/code-along/project3/db/stations.csv' DELIMITER ',' CSV HEADER;
