@@ -1,28 +1,28 @@
 /* Define global color variables for both light and dark themes */
 :root {
-  --background-color: #f3f8fc;  
+  --background-color: #f3f8fc;
   --font-color: #333;
-  --link-color: #0077FF; 
+  --link-color: #0077ff;
   --link-hover-color: #005bb5;
   --panel-bg: #ffffff;
-  --border-color: #bfcad1;  
-  --spotlight-bg: #edf5fa; 
+  --border-color: #bfcad1;
+  --spotlight-bg: #edf5fa;
   --stats-bg: #eff7fc;
   --prices-bg: #eef6fc;
-  --about-bg: #e4ecf2; 
+  --about-bg: #e4ecf2;
   --clock-bg: #ebf3f9;
   --map-center-bg: #eef5fb;
   --nearest-bg: #e9f2f8;
 }
 
 body.dark {
-  --background-color: #1f2230;  
+  --background-color: #1f2230;
   --font-color: #f5f6f8;
-  --link-color: #a0aaff;  
+  --link-color: #a0aaff;
   --link-hover-color: #808bff;
-  --panel-bg: #2a2d3f;  
-  --border-color: #3a3c4e;  
-  --spotlight-bg: #2f3240;  
+  --panel-bg: #2a2d3f;
+  --border-color: #3a3c4e;
+  --spotlight-bg: #2f3240;
   --stats-bg: #272930;
   --prices-bg: #25272e;
   --about-bg: #23252b;
@@ -35,10 +35,11 @@ body.dark {
 * {
   box-sizing: border-box;
   /* border: 1px solid red; */
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -93,7 +94,10 @@ a:hover {
   /* border-right: 1px solid var(--border-color); */
 }
 
-.spotlight, .stats, .latest-prices, .about {
+.spotlight,
+.stats,
+.latest-prices,
+.about {
   padding: 15px;
   border-radius: 5px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -140,7 +144,10 @@ a:hover {
 }
 
 /* Stats and Latest prices sections */
-.stats p, .stats .stats-list, .latest-prices p, .latest-prices ul {
+.stats p,
+.stats .stats-list,
+.latest-prices p,
+.latest-prices ul {
   margin: 10px 0;
   list-style: none;
   padding-left: 0;
@@ -149,7 +156,7 @@ a:hover {
 .stats-wrapper {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid var(--border-color)
+  border-bottom: 1px solid var(--border-color);
 }
 
 .latest-prices li {
@@ -177,7 +184,6 @@ a:hover {
   border-bottom: 1px dashed var(--link-hover-color);
 }
 
-
 /* Middle panel */
 .middle-panel {
   padding: 20px;
@@ -189,7 +195,6 @@ a:hover {
   border-radius: 5px;
 }
 
-
 /* Right panel */
 .right-panel {
   display: grid;
@@ -200,7 +205,9 @@ a:hover {
   /* border-left: 1px solid var(--border-color); */
 }
 
-.clock, .map-center, .nearest {
+.clock,
+.map-center,
+.nearest {
   padding: 15px;
   border-radius: 5px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -210,7 +217,7 @@ a:hover {
   background: var(--clock-bg);
 }
 
-.clock h2{
+.clock h2 {
   border-bottom: 0px;
 }
 
@@ -224,20 +231,25 @@ a:hover {
 
 .nearest-stations {
   border-bottom: 1px solid var(--border-color);
-  /* display: flex;
-  justify-content: space-between; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.nearest-icon-style {
+  height: 40px;
+  width: 40px;
 }
 
 /* Header */
 .page-header {
   position: sticky;
-  position: -webkit-sticky; 
-  top: 0; 
-  z-index: 1000; 
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 1000;
   display: flex;
-  justify-content: space-between; 
-  align-items: center;       
-  padding: 10px 20px;        
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
   background-color: var(--panel-bg);
   border-bottom: 1px solid var(--border-color);
 }
@@ -258,7 +270,7 @@ a:hover {
 
 /* Light mode button styles */
 button {
-  background-color: #007BFF;
+  background-color: #007bff;
   border: none;
   padding: 10px 20px;
   color: white;
