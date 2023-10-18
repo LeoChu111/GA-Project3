@@ -1,5 +1,5 @@
 # 🌟 Servo App: Your Petrol Station Locator 🌟
-This Servo App is developed as a joint effort by a team of five students as part of GA's Software Engineering Immersive program. The primary goal was to create an intuitive and efficient Single Page Application (SPA) tailored for individuals seeking to locate petrol stations based on their geographical coordinates. 
+This Servo App is developed as a joint effort by a team of five as part of GA's Software Engineering Immersive program. The primary goal was to create an intuitive and efficient Single Page Application (SPA) tailored for individuals seeking to locate petrol stations based on their geographical coordinates. 
 
 📢 Tools used: HTML, CSS, JavaScript, Node.js, Express, Postgres, Google Map API, Futures API
 
