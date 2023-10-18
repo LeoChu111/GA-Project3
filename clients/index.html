@@ -2,29 +2,55 @@
   <head>
     <title>Simple Markers</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="./style.css" />
   </head>
   <body>
+
+    <header class="page-header">
+        <div class="title-wrapper">
+          <img src="./images/Logo 7.png" alt="">
+          <h1>Servo App</h1>
+        </div>
+        <button id="dark-mode-toggle">Dark Mode</button>
+    </header>
+
     <div class="container">
+
       <div class="left-panel">
+
         <div class="spotlight">
           <h2>Spotlight</h2>
+          <a href="" id="refresh-link">refresh</a>
           <p id="random-name"></p>
           <p id="random-address"></p>
-          <a href="" id="refresh-link">refresh</a>
+          <img src="" alt="" id="spotlight-logo">
         </div>
+
         <div class="stats">
           <h2>Stats</h2>
-          <p>total stations: <span class="stations"></span></p>
-          <p>total owners: <span class="owners"></span></p>
+          <p>Total stations: <span class="stations"></span></p>
+          <p>Total owners: <span class="owners"></span></p>
+          <ul class="stats-list"></ul>
         </div>
 
-        <div class="latest-prices">Latest Prices</div>
+        <div class="latest-prices">
+          <h2>Latest Prices</h2>
+          <p>Date: <span id="current-date"></span></p>
+          <ul>
+            <li>WTI oil <span id="wti-price"></span> USD per barrel</li>
+            <li>Brent oil <span id="brent-price"></span> USD per barrel</li>
+            <li>Natural gas <span id="natural-gas-price"></span>USD per barrel</li>
+          </ul>
+        </div>
+
+
         <div class="about">
           <h2>About</h2>
-          <h3>Team Name: leo_devs</h3>
-
+          <h4>Team Name: leo_devs</h4>
           <ul>
             <li>
               Leo
@@ -58,37 +84,40 @@
             </li>
           </ul>
         </div>
+
       </div>
+
       <div class="middle-panel">
         <div id="map"></div>
       </div>
+
       <div class="right-panel">
+
         <div class="clock"></div>
-        <div class="map-center-location">Map center location</div>
+
+        <div class="map-center">
+          <h2>Map center location</h2>
+          <p class="map-center-location"></p>
+          <p class="map-center-address"></p>
+        </div>
+
         <div class="nearest">
           <h2>Nearest</h2>
         </div>
       </div>
     </div>
-    <script src="/client.js"></script>
-
-    <!-- 
-      The `defer` attribute causes the callback to execute after the full HTML
-      document has been parsed. For non-blocking uses, avoiding race conditions,
-      and consistent behavior across browsers, consider loading using Promises.
-      See https://developers.google.com/maps/documentation/javascript/load-maps-js-api
-      for more information.
-      -->
+    
     <script
-      async
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw6Ogv_TaP2W_dIEicF0z0mBY4yX3fCUo&callback=initMap"
+    async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw6Ogv_TaP2W_dIEicF0z0mBY4yX3fCUo&callback=initMap"
     ></script>
-
+    
+    <script src="/client.js"></script>
     <script src="/clock.js"></script>
-
     <script src="/utils/station_api.js"></script>
     <script src="/components/stats_section.js"></script>
     <script src="/components/nearest_section.js"></script>
     <script src="/components/spotlight_section.js"></script>
+    <script src="/components/display.js"></script>
   </body>
 </html>

@@ -51,7 +51,7 @@ function initMap() {
           const lng = center.lng();
           const centerLocationSection = document.createElement("section");
           centerLocationSection.innerHTML = `
-            Map Center Location <br> Latitude: ${lat}<br>Longitude: ${lng}`;
+            Latitude: ${lat}<br>Longitude: ${lng}`;
           mapCenterLocationDiv.innerHTML = "";
           mapCenterLocationDiv.appendChild(centerLocationSection);
         }
@@ -94,3 +94,4 @@ function initMap() {
 }
 
 window.initMap = initMap;
+
