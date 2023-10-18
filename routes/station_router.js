@@ -14,7 +14,6 @@ router.get("/within", (req, res) => {
   const lat = req.body.lat;
   const lng = req.body.lng;
   const radius = req.body.rad;
-  console.log(req);
 
   Station.stationsWithinRadius(
     parseFloat(lat),
@@ -24,13 +23,10 @@ router.get("/within", (req, res) => {
 });
 
 router.get("/nearest", (req, res) => {
-  const lat = req.body.lat;
-  const lng = req.body.lng;
-  console.log(req);
+  const lat = parseFloat(req.query.lat);
+  const lng = parseFloat(req.query.lng);
 
-  Station.nearestStation(parseFloat(lat), parseFloat(lng)).then((stations) =>
-    res.json(stations)
-  );
+  Station.nearestStation(lat, lng).then((stations) => res.json(stations));
 });
 
 module.exports = router;
