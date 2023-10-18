@@ -16,11 +16,21 @@ function randomStation() {
 
   return db.query(sql).then((result) => result.rows[0]);
 }
+function findStats() {
+  const sql = `
+  SELECT owner, COUNT(*) as total
+  FROM stations
+  GROUP BY owner
+  HAVING COUNT(*) > 1;
+  `
+  return db.query(sql).then((result => result.rows));
+}
 
 const Station = {
   findAll,
   findAllOwners,
-  randomStation
+  randomStation,
+  findStats
 };
 
 module.exports = Station;
