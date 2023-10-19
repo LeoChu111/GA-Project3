@@ -48,6 +48,9 @@ ORDER BY
     distance LIMIT 10;`;
   return db.query(sql).then((result) => result.rows);
 }
+function findBounds(ne,sw,nw,se) {
+
+}
 
 const Station = {
   findAll,
