@@ -13,11 +13,10 @@ function initMap() {
         const myLatLng = pos;
         
         map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 10,
+          zoom: 13,
+          minZoom: 9,
           center: myLatLng,
-          /* restriction: {
-            
-          } */
+
         });
         infoWindow = new google.maps.InfoWindow();
         const locationButton = document.createElement("button");
@@ -100,11 +99,9 @@ function initMap() {
             }
           });
         }
-        // have to call the function so it loads with the initMap
-        getCenterLocation();
 
-        google.maps.event.addListener(map, "dragend", getCenterLocation);
-        map.addListener("dragend", function () {
+        google.maps.event.addListener(map, "idle", getCenterLocation);
+        map.addListener("idle", function () {
           let bounds = map.getBounds();
           let ne = bounds.getNorthEast(); // Coords of the northeast corner
           let sw = bounds.getSouthWest(); // Coords of the southwest corner
@@ -113,7 +110,9 @@ function initMap() {
           fetch(`/api/stations/bounds?south=${sw.lat()}&north=${ne.lat()}&west=${sw.lng()}&east=${ne.lng()}`)
             .then(res => res.json())
             .then(results => {
-              console.log(results.length);
+              const stationInBound = document.querySelector('.station-in-bounds')
+              stationInBound.innerHTML = results.length;
+
               for (i = 0; i < results.length; i++) {
                 const contentString = `<h3 id="firstHeading" class="firstHeading">${results[i].name}</h3>
                  <p id="address">${results[i].address}</p>`;
@@ -194,94 +193,7 @@ function initMap() {
                 }
               }
             })
-          console.log(
-            ne.toString(),
-            sw.toString(),
-            nw.toString(),
-            se.toString()
-          );
         });
-        /*fetch("/api/stations/all")
-          .then((res) => res.json())
-          .then((results) => {
-            for (i = 0; i < results.length; i++) {
-              const contentString = `<h3 id="firstHeading" class="firstHeading">${results[i].name}</h3>
-               <p id="address">${results[i].address}</p>`;
-              const infowindow = new google.maps.InfoWindow({
-                content: contentString,
-                ariaLabel: results[i].name,
-              });
-              const image = {
-                Shell: {
-                  name: "Shell",
-                  url: "/images/shell.png",
-                  scaledSize: new google.maps.Size(30, 30),
-                },
-                BP: {
-                  name: "BP",
-                  url: "/images/BP-logo.png",
-                  scaledSize: new google.maps.Size(30, 30),
-                },
-                "7-Eleven Pty Ltd": {
-                  name: "7-Eleven Pty Ltd",
-                  url: "/images/7eleven.png",
-                  scaledSize: new google.maps.Size(30, 30),
-                },
-                "Independent Fuel Supplies": {
-                  name: "Independent Fuel Supplies",
-                  url: "/images/inde.png",
-                  scaledSize: new google.maps.Size(30, 30),
-                },
-                Caltex: {
-                  name: "Caltex",
-                  url: "/images/caltex.png",
-                  scaledSize: new google.maps.Size(30, 30),
-                },
-                GoogleMark: {
-                  name: "GoogleMark",
-                  url: "/images/googlemapmarker.png",
-                  scaledSize: new google.maps.Size(30, 30),
-                },
-              };
-              if (image.hasOwnProperty(results[i].owner)) {
-                const marker = new google.maps.Marker({
-                  position: {
-                    lat: Number(results[i].latitude),
-                    lng: Number(results[i].longitude),
-                  },
-                  map: map,
-                  icon: image[results[i].owner],
-                  title: results[i].name,
-                });
-                marker.addListener("click", () => {
-                  infowindow.open({
-                    anchor: marker,
-                    map,
-                  });
-                });
-              } else {
-                const marker = new google.maps.Marker({
-                  position: {
-                    lat: Number(results[i].latitude),
-                    lng: Number(results[i].longitude),
-                  },
-                  map: map,
-                  icon: {
-                    name: "GoogleMark",
-                    url: "/images/googlemapmarker.png",
-                    scaledSize: new google.maps.Size(30, 30),
-                  },
-                  title: results[i].name,
-                });
-                marker.addListener("click", () => {
-                  infowindow.open({
-                    anchor: marker,
-                    map,
-                  });
-                });
-              }
-            }
-          }); */
       },
       () => {
         handleLocationError(true, infoWindow, map.getCenter());
