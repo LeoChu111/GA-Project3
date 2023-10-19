@@ -38,9 +38,15 @@ function nearestStation(lat, lng) {
     owner,
     latitude,
     longitude,
-    (
-      POW(${lat} - latitude, 2) + 
-        POW(${lng}- longitude, 2) 
+           6371 *
+        acos(
+            cos(radians(${lat})) *
+            cos(radians(latitude)) *
+            cos(radians(longitude) -
+            radians(${lng})) +
+            sin(radians(${lat})) *
+            sin(radians(latitude))
+        
     ) AS distance
 FROM
     stations
@@ -48,9 +54,7 @@ ORDER BY
     distance LIMIT 10;`;
   return db.query(sql).then((result) => result.rows);
 }
-function findBounds(ne,sw,nw,se) {
-
-}
+function findBounds(ne, sw, nw, se) {}
 
 const Station = {
   findAll,
