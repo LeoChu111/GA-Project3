@@ -102,7 +102,14 @@ function initMap() {
         getCenterLocation();
 
         google.maps.event.addListener(map, "dragend", getCenterLocation);
-
+        map.addListener("dragend", function() {
+          let bounds = map.getBounds();
+          let ne = bounds.getNorthEast(); // Coords of the northeast corner
+          let sw = bounds.getSouthWest(); // Coords of the southwest corner
+          let nw = new google.maps.LatLng(ne.lat(), sw.lng()); // Coords of the NW corner
+          let se = new google.maps.LatLng(sw.lat(), ne.lng()); // Coords of the SE corner
+          console.log(ne.toString(), sw.toString(), nw.toString(), se.toString());
+        })
         fetch("/api/stations/all")
           .then((res) => res.json())
           .then((results) => {
