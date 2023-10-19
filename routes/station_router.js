@@ -28,8 +28,10 @@ router.get("/nearest", (req, res) => {
 
   Station.nearestStation(lat, lng).then((stations) => res.json(stations));
 });
-
-router.get("/bounds", (req, res) => {
-  
+router.get('/bounds', (req, res) => {
+  const { south, north, west, east } = req.query
+  Station.findBounds(south, north, west, east).then((stations) =>
+  res.json(stations)
+  )
 })
 module.exports = router;

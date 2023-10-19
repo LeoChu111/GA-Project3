@@ -32,3 +32,8 @@ function fetchClosestTen(lat, lng) {
       console.error("There was a problem with the fetch operation:", error);
     });
 }
+
+function fetchStationsInBound(southLat, northLat, westLng, eastLng) {
+  return fetch(`/api/stations/bounds?south=${southLat}&north=${northLat}&west=${westLng}&east=${eastLng}`)
+  .then(res => res.data)
+}

@@ -1,6 +1,6 @@
 let map, infoWindow;
 const mapCenterLocationDiv = document.querySelector(".map-center-location");
-
+ 
 function initMap() {
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
@@ -11,9 +11,13 @@ function initMap() {
           lng: position.coords.longitude,
         };
         const myLatLng = pos;
+        
         map = new google.maps.Map(document.getElementById("map"), {
           zoom: 10,
           center: myLatLng,
+          /* restriction: {
+            
+          } */
         });
         infoWindow = new google.maps.InfoWindow();
         const locationButton = document.createElement("button");
@@ -46,7 +50,7 @@ function initMap() {
           }
         });
 
-        function getCenterLocation() {
+       function getCenterLocation() {
           const center = map.getCenter();
           const lat = center.lat();
           const lng = center.lng();
@@ -106,6 +110,90 @@ function initMap() {
           let sw = bounds.getSouthWest(); // Coords of the southwest corner
           let nw = new google.maps.LatLng(ne.lat(), sw.lng()); // Coords of the NW corner
           let se = new google.maps.LatLng(sw.lat(), ne.lng()); // Coords of the SE corner
+          fetch(`/api/stations/bounds?south=${sw.lat()}&north=${ne.lat()}&west=${sw.lng()}&east=${ne.lng()}`)
+            .then(res => res.json())
+            .then(results => {
+              console.log(results.length);
+              for (i = 0; i < results.length; i++) {
+                const contentString = `<h3 id="firstHeading" class="firstHeading">${results[i].name}</h3>
+                 <p id="address">${results[i].address}</p>`;
+                const infowindow = new google.maps.InfoWindow({
+                  content: contentString,
+                  ariaLabel: results[i].name,
+                });
+                const image = {
+                  Shell: {
+                    name: "Shell",
+                    url: "/images/shell.png",
+                    scaledSize: new google.maps.Size(30, 30),
+                  },
+                  BP: {
+                    name: "BP",
+                    url: "/images/BP-logo.png",
+                    scaledSize: new google.maps.Size(30, 30),
+                  },
+                  "7-Eleven Pty Ltd": {
+                    name: "7-Eleven Pty Ltd",
+                    url: "/images/7eleven.png",
+                    scaledSize: new google.maps.Size(30, 30),
+                  },
+                  "Independent Fuel Supplies": {
+                    name: "Independent Fuel Supplies",
+                    url: "/images/inde.png",
+                    scaledSize: new google.maps.Size(30, 30),
+                  },
+                  Caltex: {
+                    name: "Caltex",
+                    url: "/images/caltex.png",
+                    scaledSize: new google.maps.Size(30, 30),
+                  },
+                  GoogleMark: {
+                    name: "GoogleMark",
+                    url: "/images/googlemapmarker.png",
+                    scaledSize: new google.maps.Size(30, 30),
+                  },
+                };
+                if (image.hasOwnProperty(results[i].owner)) {
+                  const marker = new google.maps.Marker({
+                    position: {
+                      lat: Number(results[i].latitude),
+                      lng: Number(results[i].longitude),
+                    },
+                    map: map,
+                    icon: image[results[i].owner],
+                    title: results[i].name,
+                  });
+                  marker.addListener("click", () => {
+                    infowindow.open({
+                      anchor: marker,
+                      map,
+                    });
+                  });
+                } else {
+                  const marker = new google.maps.Marker({
+                    position: {
+                      lat: Number(results[i].latitude),
+                      lng: Number(results[i].longitude),
+                    },
+                    map: map,
+                    icon: {
+                      name: "GoogleMark",
+                      url: "/images/googlemapmarker.png",
+                      scaledSize: new google.maps.Size(15, 30),
+                    },
+                    title: results[i].name,
+                  });
+                  marker.addListener("click", () => {
+                    infowindow.open({
+                      anchor: marker,
+                      map,
+                    });
+                  map.setCenter(marker.getPosition());
+                      infowindow.open(map, marker);
+                  });
+                }
+              }
+            })
           console.log(
             ne.toString(),
             sw.toString(),
@@ -113,7 +201,7 @@ function initMap() {
             se.toString()
           );
         });
-        fetch("/api/stations/all")
+        /*fetch("/api/stations/all")
           .then((res) => res.json())
           .then((results) => {
             for (i = 0; i < results.length; i++) {
@@ -193,7 +281,7 @@ function initMap() {
                 });
               }
             }
-          });
+          }); */
       },
       () => {
         handleLocationError(true, infoWindow, map.getCenter());
