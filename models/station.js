@@ -54,7 +54,11 @@ ORDER BY
     distance LIMIT 10;`;
   return db.query(sql).then((result) => result.rows);
 }
-function findBounds(ne, sw, nw, se) {}
+function findBounds(southLat, northLat, westLng, eastLng) {
+  const sql =
+  'select * from stations where latitude between $1 and $2 and longitude between $3 and $4;'
+  return db.query(sql, [southLat, northLat, westLng, eastLng]).then(res => res.rows)
+}
 
 const Station = {
   findAll,
@@ -63,6 +67,7 @@ const Station = {
   findStats,
   stationsWithinRadius,
   nearestStation,
+  findBounds
 };
 
 module.exports = Station;
