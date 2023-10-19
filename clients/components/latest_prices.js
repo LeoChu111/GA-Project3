@@ -1,4 +1,4 @@
-const apiKey = "NEED NEW API KEY";
+const apiKey = "RaNyFRwl3v2rkURciQCC63A07f8iXVm3f2I9myA7";
 const wtiPriceSpan = document.getElementById("wti-price");
 const brentPriceSpan = document.getElementById("brent-price");
 const naturalGasPriceSpan = document.getElementById("natural-gas-price");

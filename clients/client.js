@@ -95,7 +95,7 @@ function initMap() {
               let stationDiv = document.createElement("div");
               stationDiv.innerHTML = HTML;
               stationDiv.className = "nearest-stations";
-              nearest.appendChild(nearestStationIcon);
+              stationDiv.appendChild(nearestStationIcon);
               nearest.appendChild(stationDiv);
             }
           });

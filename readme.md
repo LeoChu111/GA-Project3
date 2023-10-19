@@ -5,10 +5,10 @@ This Servo App is developed as a joint effort by a team of five as part of GA's 
 📢 Tools used: HTML, CSS, JavaScript, Node.js, Express, Postgres, Google Map API, Futures API
 
 💎 Light Mode
-![](/clients/images/Placeholder%20-%20Light%20mode.png)
+![](/clients/images/Light-mode-1.png)
 
 💎 Dark Mode
-![](/clients/images/Placeholder%20-%20Dark%20mode.png)
+![](/clients/images/Dark-mode-1.png)
 
 ## 🏆 Meet the Team
 
